@@ -36,7 +36,7 @@ function activate (context) {
         vscode.workspace.openTextDocument(vscode.Uri.file(sufixToOpen[0]))
           .then(vscode.window.showTextDocument)
       } else {
-        const fileToOpen = `**${lastPath}${filenameWithoutExtension}_spec${filenameExtension}`
+        const fileToOpen = `**/${filenameWithoutExtension}.test${filenameExtension}`
         vscode.workspace.findFiles(fileToOpen, '**/node_modules/**')
           .then(files => {
             vscode.workspace.openTextDocument(vscode.Uri.file(files[0].fsPath))
@@ -51,7 +51,7 @@ function activate (context) {
         vscode.workspace.openTextDocument(vscode.Uri.file(fileToOpen))
           .then(vscode.window.showTextDocument)
       } else {
-        fileToOpen = `**${lastPath}${filenameWithoutExtension}${filenameExtension}`.replace('_spec', '')
+        fileToOpen = `**/${filenameWithoutExtension}${filenameExtension}`.replace('.test', '')
         vscode.workspace.findFiles(fileToOpen, '**/node_modules/**')
           .then(files => {
             vscode.workspace.openTextDocument(vscode.Uri.file(files[0].fsPath))
